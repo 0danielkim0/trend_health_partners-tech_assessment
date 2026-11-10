@@ -50,7 +50,7 @@ pip install requests pandas beautifulsoup4 lxml python-dotenv pytest jupyter pap
 
 ## Schema
 
-[image here]
+[Diagram](docs/schema.png)
 
 Note 1: normalization into dimension/fact tables was not applied in this case; the data (1) has too few potential ID columns, and (2) did not require anti-redundancy or significant write/update capability for a project this size.
 Note 2: the pipeline does not implement record updating, instead replacing all files. A larger-scale enterprise setup would likely benefit from table-write operations in particular for raw data, to avoid overwhelming memory.
