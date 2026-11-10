@@ -1,5 +1,6 @@
 from pathlib import Path
 import requests
+import sqlite3
 import pandas as pd
 
 # For log messages (diagnostics are always helpful and preferred)
@@ -7,14 +8,17 @@ import logging
 import sys
 from datetime import datetime
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 ###############
 # Minor code & functions
 ###############
 
 # Create log file for each run
+LOG_DIR = "logs"
 timestamp = datetime.now().strftime("%Y%b%d_%H%M%S")
-log_file = f"log_{timestamp}.txt"
-sys.stdout = open('')
+log_file = BASE_DIR/"logs"/f"Run-{timestamp}.txt"
+sys.stdout = open(log_file, "w", buffering = 1)
 
 ###############
 # Extract
@@ -88,9 +92,35 @@ def download_tsv(
 # Load
 ###############
 
+def insert_table(
+    df: pd.DataFrame,
+    table_name: str
+):
+    # Set constants
+    DB_PATH = BASE_DIR/"database"/"schema.db"
+    SCHEMA_PATH = BASE_DIR/"database"/"schema.sql"
+    
+    # Execute within schema setup
+    with sqlite3.connect(DB_PATH) as connection:
 
+            # Get schema.sql file
+            with open(SCHEMA_PATH, "r", encoding = "utf-8") as f:
+                connection.executescript(f.read())
+
+            # Insert dataframe into SQLite
+            df.to_sql(
+                name = table_name,
+                con = connection,
+                if_exists = "replace",
+                index = False
+            )
+
+            print(f"Successfully inserted data into {table_name}")
 
 ###############
 # Transform
 ###############
 
+"""
+    Refer to comments in main.py step 3.
+"""

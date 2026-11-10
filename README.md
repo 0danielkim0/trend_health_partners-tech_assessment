@@ -20,7 +20,7 @@ Note that:
   - Pip version: 24.0
   - SQLite version: 3.45.1
 - Package installation *(Note: Not all packages may be necessary, but this typically covers all bases for most general-use projects.)*
-`pip install requests pandas beautifulsoup4 lxml python-dotenv pytest jupyter matplotlib`
+`pip install requests pandas beautifulsoup4 lxml python-dotenv pytest jupyter papermill matplotlib`
 
 Directory
 - `database`: .sql files
@@ -57,8 +57,6 @@ Note 1: normalization into dimension/fact tables was not applied in this case; t
 Note 2: the pipeline does not implement record updating, instead replacing all files. A larger-scale enterprise setup would likely benefit from table-write operations in particular for raw data, to avoid overwhelming memory.
 
 ## Data
-
-Note: only data with dates from January 01, 2000 onward are kept.
 
 Table 1: `clue_data` *(Note: data dictionary for this table was copied from original data source)*
 
@@ -104,11 +102,11 @@ Table 2: `contest_data`
 
 ## Research Questions
 
-1. A
-2. B
-3. C
-4. D
-5. E
+1. Does Jeopardy increasingly favor certain areas of knowledge?
+2. What is the relationship between performance in earlier  and later rounds?
+3. Are episodes and contestants becoming more competitive over time?
+4. Are higher-value clues associated with specific categories?
+5. Does having the highest Coryat score predict winning?
 
 ## Sources / Licenses
 

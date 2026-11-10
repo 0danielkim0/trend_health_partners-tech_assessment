@@ -14,10 +14,13 @@ venv/
 # Jupyter
 .ipynb_checkpoints/
 
-# Databases
+# Data
 *.db
 *.sqlite
 *.sqlite3
+input/
+logs/
+*_output.ipynb
 
 # Operating system
 .DS_Store
