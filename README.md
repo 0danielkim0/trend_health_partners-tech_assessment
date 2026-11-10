@@ -19,8 +19,6 @@ Note that:
   - Python version: 3.11.8
   - Pip version: 24.0
   - SQLite version: 3.45.1
-- Package installation *(Note: Not all packages may be necessary, but this typically covers all bases for most general-use projects.)*
-`pip install requests pandas beautifulsoup4 lxml python-dotenv pytest jupyter papermill matplotlib`
 
 Directory
 - `database`: .sql files
@@ -41,10 +39,11 @@ python3 --version
 python -m pip install --upgrade pip
 python3 -m pip --version
 ```
-2. Open virtual environment.
+2. Open virtual environment and install packages. *(Note: Not all packages may be necessary, but this set typically covers all bases for most general-use projects.)*
 ```
 python3 -m venv .venv
 source .venv/bin/activate
+pip install requests pandas beautifulsoup4 lxml python-dotenv pytest jupyter papermill matplotlib pyprojroot
 ```
 3. Run following code to download paginated data subset, perform tidying, and answer research questions.
 `python main.py`

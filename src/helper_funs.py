@@ -15,7 +15,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 ###############
 
 # Create log file for each run
-LOG_DIR = "logs"
+LOG_DIR = Path("logs").mkdir(exist_ok = True)
 timestamp = datetime.now().strftime("%Y%b%d_%H%M%S")
 log_file = BASE_DIR/"logs"/f"Run-{timestamp}.txt"
 sys.stdout = open(log_file, "w", buffering = 1)
